@@ -1,3 +1,10 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -52,4 +59,10 @@ var maxDepth = function (root) {
   }
 };
 
-console.log(maxDepth([3, 9, 20, null, null, 15, 7]));
+let root = new Node(1);
+root.left = new Node(2);
+root.left = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+root.left.right.left = new Node(6);
+console.log(maxDepth(root));

@@ -1,3 +1,11 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -54,4 +62,11 @@ var invertTree = (root) => {
   return root;
 };
 
-console.log(invertTree([4, 2, 7, 1, 3, 6, 9]));
+let root = new Node(4);
+root.left = new Node(2);
+root.right = new Node(7);
+root.left.left = new Node(1);
+root.left.right = new Node(3);
+root.right.left = new Node(6);
+root.right.right = new Node(9);
+console.log(invertTree(root));

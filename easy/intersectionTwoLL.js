@@ -6,6 +6,52 @@
  * }
  */
 
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  prepend(data) {
+    const NewNode = new Node(data, this.head);
+    this.head = NewNode;
+    if (!this.tail) this.tail = NewNode;
+    this.length++;
+  }
+
+  append(data) {
+    const NewNode = new Node(data, null);
+    if (!this.head) {
+      this.head = NewNode;
+    }
+
+    let currNode = this.tail;
+    if (currNode) {
+      currNode.next = NewNode;
+    }
+    this.tail = NewNode;
+
+    this.length++;
+  }
+  printData() {
+    let array = "";
+    let currNode = this.head;
+    while (currNode) {
+      array += `${currNode.value} --> `;
+      currNode = currNode.next;
+    }
+    return `${array}null`;
+  }
+}
+
+class Node {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
 /**
 brute forace
 using hashSet
@@ -90,7 +136,7 @@ var getIntersectionNode = function (headA, headB) {
 
   // Now both heads are the same distances of intersection
   // start moving then utill they meet
-  while (headA != headB) {
+  while (headA.value != headB.value) {
     headA = headA.next;
     headB = headB.next;
   }
@@ -110,4 +156,22 @@ function getLinkedListLength(head) {
   return length;
 }
 
-console.log(getIntersectionNode([1, 9, 1, 2, 4], [3, 2, 4]));
+const LinkedList1 = new LinkedList();
+const LinkedList2 = new LinkedList();
+LinkedList1.append(4);
+LinkedList1.append(1);
+LinkedList1.append(8);
+LinkedList1.append(4);
+LinkedList1.append(5);
+
+LinkedList2.append(5);
+LinkedList2.append(6);
+LinkedList2.append(1);
+LinkedList2.append(8);
+LinkedList2.append(4);
+LinkedList2.append(5);
+
+let showAfter = LinkedList1.printData(
+  getIntersectionNode(LinkedList1.head, LinkedList2.head)
+);
+console.log("🚀 ~ showAfter:", showAfter);

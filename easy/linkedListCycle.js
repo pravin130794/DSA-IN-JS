@@ -6,6 +6,53 @@
  * }
  */
 
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  prepend(data) {
+    const NewNode = new Node(data, this.head);
+    this.head = NewNode;
+    if (!this.tail) this.tail = NewNode;
+    this.length++;
+  }
+
+  append(data) {
+    const NewNode = new Node(data, null);
+    if (!this.head) {
+      this.head = NewNode;
+    }
+
+    let currNode = this.tail;
+    if (currNode) {
+      currNode.next = NewNode;
+    }
+    this.tail = NewNode;
+
+    this.length++;
+  }
+  printData(head) {
+    console.log("🚀 ~ LinkedList ~ printData ~ head:", head);
+    let array = "";
+    let currNode = head;
+    while (currNode) {
+      array += `${currNode.value} --> `;
+      currNode = currNode.next;
+    }
+    return `${array}null`;
+  }
+}
+
+class Node {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
 /**
  * @param {ListNode} head
  * @return {boolean}
@@ -25,4 +72,13 @@ var hasCycle = function (head) {
   return false;
 };
 
-console.log(hasCycle([3, 2, 0, -4]));
+let head = new Node(10);
+head.next = new Node(20);
+head.next.next = new Node(30);
+head.next.next.next = new Node(40);
+head.next.next.next.next = new Node(50);
+head.next.next.next.next.next = new Node(60);
+
+head.next.next.next.next = head;
+const linkedList = new LinkedList();
+console.log(hasCycle(head));

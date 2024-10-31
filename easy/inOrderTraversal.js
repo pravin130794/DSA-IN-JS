@@ -1,3 +1,11 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -50,7 +58,7 @@ var inorderTraversal = function (root, result = []) {
   inorderTraversal(root.left, result);
 
   // Visit root
-  result.push(root.val);
+  result.push(root.value);
 
   // Visit right subtree
   inorderTraversal(root.right, result);
@@ -58,4 +66,9 @@ var inorderTraversal = function (root, result = []) {
   return result;
 };
 
-console.log(inorderTraversal([1, null, 2, 3]));
+let root = new Node(1);
+root.left = new Node(2);
+root.left = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+console.log(inorderTraversal(root));

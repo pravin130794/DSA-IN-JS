@@ -1,3 +1,10 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -59,4 +66,18 @@ var isSymmetric = function (root) {
   return true;
 };
 
-console.log(isSymmetric([1, 2, 2, 3, 4, 4, 3]));
+let root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(2);
+root.left.left = new Node(3);
+root.left.right = new Node(4);
+root.right.left = new Node(4);
+root.right.right = new Node(3);
+console.log(isSymmetric(root));
+
+let root1 = new Node(1);
+root1.left = new Node(2);
+root1.right = new Node(2);
+root1.left.right = new Node(3);
+root1.right.right = new Node(4);
+console.log(isSymmetric(root1));

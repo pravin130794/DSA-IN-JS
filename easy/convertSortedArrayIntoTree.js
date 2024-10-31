@@ -11,6 +11,12 @@
  * @return {TreeNode}
  */
 
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
 //using Binary Search Algorithm
 var sortedArrayToBST = function (nums) {
   return helper(nums, 0, nums.length - 1);

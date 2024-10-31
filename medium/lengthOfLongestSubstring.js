@@ -1,4 +1,4 @@
-//solve using sliding window pattern and Set DS
+//solve using sliding window pattern and Set Data structure
 // initialize start and end and maxLength and set
 // iterate through string 's'
 // check char is present in set or not

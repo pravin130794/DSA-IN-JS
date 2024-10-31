@@ -27,4 +27,22 @@ var twoSum = function (nums, target) {
   return [];
 };
 
-console.log(twoSum([2, 7, 11, 15], 9));
+var twoSumWithTwoPointer = function (nums, target) {
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l < r) {
+    let sums = nums[l] + nums[r];
+    if (sums === target) {
+      return [l, r];
+    } else if (sums < target) {
+      l++;
+    } else {
+      r--;
+    }
+  }
+  return [];
+};
+
+console.log(twoSum([2, 3, 4], 5));
+console.log(twoSumWithTwoPointer([2, 3, 4], 5));

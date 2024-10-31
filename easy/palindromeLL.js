@@ -1,10 +1,49 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  prepend(data) {
+    const NewNode = new Node(data, this.head);
+    this.head = NewNode;
+    if (!this.tail) this.tail = NewNode;
+    this.length++;
+  }
+
+  append(data) {
+    const NewNode = new Node(data, null);
+    if (!this.head) {
+      this.head = NewNode;
+    }
+
+    let currNode = this.tail;
+    if (currNode) {
+      currNode.next = NewNode;
+    }
+    this.tail = NewNode;
+
+    this.length++;
+  }
+  printData() {
+    let array = "";
+    let currNode = this.head;
+    while (currNode) {
+      array += `${currNode.value} --> `;
+      currNode = currNode.next;
+    }
+    return `${array}null`;
+  }
+}
+
+class Node {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
 /**
 find the middle node of list
 odd nodes : let right side list is smaller (1 -> 2 -> 3 -> 2 -> 1 )
@@ -32,7 +71,7 @@ var isPalindrome = function (head) {
 
   //compare the val of lists
   while (slow != null) {
-    if (fast.val != slow.val) {
+    if (fast.value != slow.value) {
       return false;
     } else {
       slow = slow.next;
@@ -50,4 +89,14 @@ var reverseList = function (head) {
   return prev;
 };
 
-console.log(isPalindrome([1, 2, 2, 1]));
+const LinkedList1 = new LinkedList();
+LinkedList1.append(1);
+LinkedList1.append(2);
+LinkedList1.append(3);
+LinkedList1.append(2);
+LinkedList1.append(1);
+let showBefore = LinkedList1.printData();
+console.log("🚀 ~ showBefore:", showBefore);
+console.log(isPalindrome(LinkedList1.head));
+let showAfter = LinkedList1.printData();
+console.log("🚀 ~ showAfter:", showAfter);
