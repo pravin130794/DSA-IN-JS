@@ -43,3 +43,13 @@ JAVASCRIPT does not provide heap Data Structure
 
 for practice leetCode provide lib
 new MinPriorityQeueu();
+
+----------------------------------------------------------------------------
+
+
+ferquency pattern algorithm
+
+- group anagrams
+- find all anagrans
+- findKthLargest
+
