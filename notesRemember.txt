@@ -53,3 +53,7 @@ ferquency pattern algorithm
 - find all anagrans
 - findKthLargest
 
+
+----------------------------------------------------------------------------
+
+when you see problem realted brackets then stack Data Structure need to use.
