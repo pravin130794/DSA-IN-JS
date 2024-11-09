@@ -57,3 +57,7 @@ ferquency pattern algorithm
 ----------------------------------------------------------------------------
 
 when you see problem realted brackets then stack Data Structure need to use.
+
+----------------------------------------------------------------------------
+
+A greedy algorithm, as the name suggests, always makes the choice that seems to be the best at that moment.
