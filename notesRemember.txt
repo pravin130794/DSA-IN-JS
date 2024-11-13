@@ -1,3 +1,15 @@
+
+Coding interview
+
+- discuss edge case
+- explain approach to understand the interview
+- code like production ready e.g. function name / variable name should be meaningfull and understand
+- Dry run code 
+- Thinking of loud the problem
+-
+
+----------------------------------------------------------------------------
+
 const map1 = new Map();
 
 map1.set('a', 1);
