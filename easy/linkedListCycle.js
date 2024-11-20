@@ -35,7 +35,6 @@ class LinkedList {
     this.length++;
   }
   printData(head) {
-    console.log("🚀 ~ LinkedList ~ printData ~ head:", head);
     let array = "";
     let currNode = head;
     while (currNode) {

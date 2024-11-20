@@ -73,28 +73,27 @@ class LinkedList {
     console.log(elements.join(" -> "));
   }
 
-  removeNthFromEnd = function (head, n) {
-    let dummy = new Node(-1); // Create a dummy node
+  swapPairs = function (head) {
+    let dummy = new Node(-1);
     dummy.next = head;
-    let ptr1 = dummy;
-    let ptr2 = dummy;
+    let point = dummy;
 
-    // Move ptr2 pointer n steps ahead
-    for (let i = 0; i < n; i++) {
-      if (ptr2 === null) return head; // Edge case: n is greater than list length
-      ptr2 = ptr2.next;
+    //Ensure nodeswe are swapping is not null
+    while (point.next && point.next.next) {
+      // identify swap nodes
+      let swap1 = point.next;
+      let swap2 = point.next.next;
+
+      // actual swap
+      swap1.next = swap2.next;
+      swap2.next = swap1;
+
+      // prepare for next swap
+      point.next = swap2;
+      point = swap1;
     }
-
-    // Move both pointers until ptr2 reaches the end
-    while (ptr2.next !== null) {
-      ptr1 = ptr1.next;
-      ptr2 = ptr2.next;
-    }
-
-    // Remove the nth node from the end
-    ptr1.next = ptr1.next.next;
-
-    return dummy.next; // Return the new head
+    // return the start node
+    return dummy.next;
   };
 }
 
@@ -105,4 +104,4 @@ linkedList.append(20);
 linkedList.append(30);
 linkedList.append(40);
 linkedList.print(linkedList.head);
-linkedList.print(linkedList.removeNthFromEnd(linkedList.head, 2));
+linkedList.print(linkedList.swapPairs(linkedList.head));

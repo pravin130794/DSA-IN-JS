@@ -1,7 +1,8 @@
 class Node {
   constructor(data) {
-    this.data = data;
+    this.val = data;
     this.next = null;
+    this.random = null;
   }
 }
 
@@ -67,42 +68,40 @@ class LinkedList {
     let current = head;
     const elements = [];
     while (current !== null) {
-      elements.push(current.data);
+      elements.push(current.val);
       current = current.next;
     }
     console.log(elements.join(" -> "));
   }
 
-  removeNthFromEnd = function (head, n) {
-    let dummy = new Node(-1); // Create a dummy node
-    dummy.next = head;
-    let ptr1 = dummy;
-    let ptr2 = dummy;
+  copyRandomList = function (head) {
+    const nodeCopy = new Map();
+    nodeCopy.set(null, null);
+    let node = head;
 
-    // Move ptr2 pointer n steps ahead
-    for (let i = 0; i < n; i++) {
-      if (ptr2 === null) return head; // Edge case: n is greater than list length
-      ptr2 = ptr2.next;
+    while (node) {
+      nodeCopy.set(node, new Node(node.val));
+      node = node.next;
     }
 
-    // Move both pointers until ptr2 reaches the end
-    while (ptr2.next !== null) {
-      ptr1 = ptr1.next;
-      ptr2 = ptr2.next;
+    node = head;
+
+    while (node) {
+      nodeCopy.get(node).next = nodeCopy.get(node.next);
+      nodeCopy.get(node).random = nodeCopy.get(node.random);
+      node = node.next;
     }
 
-    // Remove the nth node from the end
-    ptr1.next = ptr1.next.next;
-
-    return dummy.next; // Return the new head
+    return nodeCopy.get(head);
   };
 }
 
 // Example usage:
 const linkedList = new LinkedList();
+linkedList.append(7);
+linkedList.append(13);
+linkedList.append(11);
 linkedList.append(10);
-linkedList.append(20);
-linkedList.append(30);
-linkedList.append(40);
+linkedList.append(1);
 linkedList.print(linkedList.head);
-linkedList.print(linkedList.removeNthFromEnd(linkedList.head, 2));
+linkedList.print(linkedList.copyRandomList(linkedList.head));
